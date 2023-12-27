@@ -10,6 +10,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
           child: Text('Hello World!'),
@@ -18,3 +19,7 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+
+//TODO: crear una rama y migrar "git checkout -b <nombre_rama>"
+
+//TODO: Para regresar todos los cambios a un commit anterior "git checkout -- ."
