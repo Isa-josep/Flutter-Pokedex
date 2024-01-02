@@ -28,10 +28,6 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
     topEnd = random.nextDouble()*100;
     bottomStart = random.nextDouble()*100;
     bottomEnd = random.nextDouble()*100;
-    print(topStart);
-    print(topEnd);
-    print(bottomStart);
-    print(bottomEnd);
     color = Color.fromRGBO(
       random.nextInt(255),
       random.nextInt(255),
