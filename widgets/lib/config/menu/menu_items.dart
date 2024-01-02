@@ -36,4 +36,11 @@ const appMenuItems = <MenuItem>[
     icon: Icons.refresh,
   ),
 
+  MenuItem(
+    title: 'SnackBar y dialogos',
+    subTitle: 'snackbar, alert, simpleDialog, alertDialog ',
+    link: '/snackbar',
+    icon: Icons.info_outline,
+  )
+
 ];
