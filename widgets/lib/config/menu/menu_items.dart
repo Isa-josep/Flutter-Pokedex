@@ -56,4 +56,11 @@ const appMenuItems = <MenuItem>[
     link: '/iu-controls',
     icon: Icons.card_membership_rounded,
   ),
+
+  MenuItem(
+    title: 'Tutorial ',
+    subTitle: 'tutorial flutter',
+    link: '/tutorial',
+    icon: Icons.sim_card_alert_sharp,
+  ),
 ];
