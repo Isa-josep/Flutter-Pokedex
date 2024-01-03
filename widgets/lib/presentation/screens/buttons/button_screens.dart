@@ -1,8 +1,9 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:math' show Random;
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +92,7 @@ class _ButtonsView extends StatelessWidget {
             ),
 
             const CustomButton(),
-
+            const CustomButton2(),
           ],
         ),
       ),
@@ -118,6 +119,57 @@ class CustomButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10 ),
             child: Text("Hola mundo")
             ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButton2 extends StatefulWidget {
+  const CustomButton2({super.key});
+
+  @override
+  CustomButton2State createState() => CustomButton2State();
+}
+
+class CustomButton2State extends State<CustomButton2> {
+  late Color _currentColor;
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentColor = _getRandomColor();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _currentColor = _getRandomColor();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  Color _getRandomColor() {
+    final random = Random();
+    return Color((random.nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Material(
+        color: _currentColor,
+        child: InkWell(
+          onTap: () {},
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text("Hola mundo"),
+          ),
         ),
       ),
     );
