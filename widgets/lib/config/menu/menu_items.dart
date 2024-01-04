@@ -63,4 +63,11 @@ const appMenuItems = <MenuItem>[
     link: '/tutorial',
     icon: Icons.sim_card_alert_sharp,
   ),
+
+  MenuItem(
+    title: 'Infinite Scroll ',
+    subTitle: 'Infinite Scroll refresh',
+    link: '/infinite',
+    icon: Icons.score_sharp,
+  ),
 ];

@@ -86,7 +86,7 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
           //   child: Text(),
           //   ),
 
-          //TODO: agregar paginas 
+          //TODO: agregar paginas
           Positioned(
             right: 20,
             top: 50,
