@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:widgets/presentation/screens/screens.dart';
+import 'package:widgest2/presentation/screens/screens.dart';
 
 // GoRouter configuration
 final appRouter = GoRouter(
