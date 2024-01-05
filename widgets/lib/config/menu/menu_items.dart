@@ -15,6 +15,14 @@ class MenuItem{
 }
 
 const appMenuItems = <MenuItem>[
+
+  MenuItem(
+    title: 'Counter Screen ',
+    subTitle: 'Contador',
+    link: '/counter',
+    icon: Icons.countertops,
+  ),
+  
   MenuItem(
     title: 'Button',
     subTitle: 'Variedad de botones',
@@ -70,4 +78,6 @@ const appMenuItems = <MenuItem>[
     link: '/infinite',
     icon: Icons.score_sharp,
   ),
+
+  
 ];
