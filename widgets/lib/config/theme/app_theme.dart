@@ -1,36 +1,47 @@
 import 'package:flutter/material.dart';
 
-const ColorList=[
+const colorList = <Color>[
   Colors.blue,
-  Colors.red,
+  Colors.teal,
   Colors.green,
+  Colors.red,
   Colors.purple,
+  Colors.deepPurple,
   Colors.orange,
   Colors.pink,
-  Colors.teal,
-  Colors.amber,
-  Colors.brown,
-  Colors.cyan,
-  Colors.deepOrange,
-  Colors.deepPurple,
-  Colors.indigo,
-  Colors.lime,
-  Colors.yellow,
+  Colors.pinkAccent,
 ];
 
-class AppTheme{
+
+
+class AppTheme {
+
   final int selectedColor;
+  final bool isDarkmode;
+
   AppTheme({
     this.selectedColor = 0,
-  }): assert(selectedColor >= 0, 'El color seleccionado tiene que ser mayor a 0 ' ),
-  assert(selectedColor < ColorList.length, 'El color seleccionado tiene que ser menor a ${ColorList.length} ');
+    this.isDarkmode = false,
+  }): assert( selectedColor >= 0, 'Selected color must be greater then 0' ),  
+      assert( selectedColor < colorList.length, 
+        'Selected color must be less or equal than ${ colorList.length - 1 }');
 
-  ThemeData getTheme ()=> ThemeData(
+  ThemeData getTheme() => ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: ColorList[selectedColor], 
+    brightness: isDarkmode ? Brightness.dark : Brightness.light,
+    colorSchemeSeed: colorList[ selectedColor ],
     appBarTheme: const AppBarTheme(
-      centerTitle: false,
-    ) 
+      centerTitle: false
+    ),
+  );
+
+
+  AppTheme copyWith({
+    int? selectedColor,
+    bool? isDarkmode
+  }) => AppTheme(
+    selectedColor: selectedColor ?? this.selectedColor,
+    isDarkmode: isDarkmode ?? this.isDarkmode,
   );
 
 }

@@ -1,6 +1,6 @@
 {
-    "name": "widgets",
-    "short_name": "widgets",
+    "name": "widgets_app",
+    "short_name": "widgets_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

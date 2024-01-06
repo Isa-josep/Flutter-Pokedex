@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
 import 'dart:math' show Random;
+import 'package:flutter/material.dart';
+
 class AnimatedScreen extends StatefulWidget {
-  static const name='animated_screen';
+
+  static const name = 'animated_screen';
+
   const AnimatedScreen({super.key});
 
   @override
@@ -10,64 +13,54 @@ class AnimatedScreen extends StatefulWidget {
 
 class _AnimatedScreenState extends State<AnimatedScreen> {
 
-  double width = 100;
-  double height = 100;
+  double width = 50;
+  double height = 50;
   Color color = Colors.indigo;
-  double radius = 10.0;
-  double topStart = 10.0;
-  double topEnd = 10.0;
-  double bottomStart = 10.0;
-  double bottomEnd = 10.0;
-  void cambiarForma(){
+  double borderRadius = 10.0;
+
+  void changeShape() {
+
     final random = Random();
 
-    width = random.nextInt(320)+40;
-    height = random.nextInt(320)+40; // se agrega el 50, ya que puede generar 0 y si es ese caso se suman 50
-    radius = random.nextDouble()*100;
-    topStart = random.nextDouble()*100;
-    topEnd = random.nextDouble()*100;
-    bottomStart = random.nextDouble()*100;
-    bottomEnd = random.nextDouble()*100;
+    width = random.nextInt(300) + 120;
+    height = random.nextInt(300) + 120;
+    borderRadius = random.nextInt(100) + 20;
+    
     color = Color.fromRGBO(
-      random.nextInt(255),
-      random.nextInt(255),
-      random.nextInt(255),
-      random.nextInt(10)+1,
-    );
-    setState(() {
-      
-    });
+      random.nextInt(255),  // red
+      random.nextInt(255),  // green
+      random.nextInt(255),  // blue
+      1 // opacity
+    ); 
+    setState(() {});
+
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Animated container'),
-
+        title: const Text('Animated Container'),
       ),
 
       body: Center(
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeOut,
-          width: width <= 0 ? 0:width , //evitar que el width sea 0
-          height: height <= 0 ? 0:height, //evitar que el height sea 0
+          duration: const Duration( milliseconds: 400 ),
+          curve: Curves.elasticOut,
+          width: width <= 0 ? 0 : width,
+          height: height <= 0 ? 0 : height,
           decoration: BoxDecoration(
             color: color,
-
-            borderRadius: BorderRadiusDirectional.only(
-              topStart: Radius.circular(topStart),
-              topEnd: Radius.circular(topEnd),
-              bottomStart: Radius.circular(bottomStart),
-              bottomEnd: Radius.circular(bottomEnd),
-            ) 
+            borderRadius: BorderRadius.circular(borderRadius < 0 ? 0 : borderRadius)
           ),
         ),
       ),
 
+
       floatingActionButton: FloatingActionButton(
-        onPressed: cambiarForma,
-        child: const Icon(Icons.play_arrow),
+        onPressed: changeShape,
+        child: const Icon( Icons.play_arrow_rounded ),
       ),
     );
   }
