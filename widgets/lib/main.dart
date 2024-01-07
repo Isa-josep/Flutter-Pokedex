@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:widgets_app/config/router/app_router.dart';
+import 'package:widgets_app/config/theme/app_theme.dart';
+import 'package:widgets_app/presentation/providers/theme_provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    const ProviderScope(
+      child: MainApp()
+    )
+  );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref ) {
+
+    // final isDarkmode = ref.watch(isDarkmodeProvider);
+    // final selectedColor = ref.watch(selectedColorProvider);
+    final AppTheme appTheme = ref.watch( themeNotifierProvider );
+
+    return MaterialApp.router(
+      title: 'Flutter Widgets',
+      routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      theme: appTheme.getTheme(),
     );
   }
 }
-
-//TODO: crear una rama y migrar "git checkout -b <nombre_rama>"
-
-//TODO: Para regresar todos los cambios a un commit anterior "git checkout -- ."
