@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:widgets/config/router/app_router.dart';
+import 'package:widgets/config/theme/app_theme.dart';
+
 
 void main() {
-  runApp(const MainApp());
+  const ProviderScope(
+    child: MainApp(),
+  
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -9,17 +16,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp.router(
+      title: "Widgets",
+      routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      theme: AppTheme(selectedColor: 2).getTheme(),
+      
     );
   }
 }
 
-//TODO: crear una rama y migrar "git checkout -b <nombre_rama>"
+//TODO: crear una rama y migrar "git checkout -b master"
 
 //TODO: Para regresar todos los cambios a un commit anterior "git checkout -- ."
