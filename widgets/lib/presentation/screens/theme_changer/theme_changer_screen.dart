@@ -54,9 +54,9 @@ class _ThemeChangerView extends ConsumerWidget {
         return RadioListTile(
           title: Text('Este color', style:  TextStyle( color: color )),
           subtitle: Text('${ color.value }'),
-          activeColor: color,
-          value: index, 
-          groupValue: selectedColor, 
+          activeColor: color, //cambia el color del selector por el color de la variable color
+          value: index, //manda el index del color seleccionado
+          groupValue: selectedColor, // es el valor que se selecciona
           onChanged: (value) {
             // ref.read(selectedColorProvider.notifier).state = index;
             ref.watch( themeNotifierProvider.notifier )
